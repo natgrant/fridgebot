@@ -9,7 +9,7 @@ const server = express();
 
 server.engine("hbs", hbs({ extname: "hbs", defaultLayout: "main" }));
 server.set("view engine", "hbs");
-set.use(express.static("public"));
+server.use(express.static("public"));
 server.use(bodyParser.json());
 server.use(express.urlencoded({ extended: true }));
 
