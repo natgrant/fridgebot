@@ -1,0 +1,15 @@
+<h1>Hello, {{user.name}}</h1>
+
+<h3>Food Items</h3>
+{{#if items}}
+{{#each items}}
+<ul>
+  <li><strong>Name:</strong> {{itemName}}</li>
+  <li><strong>description:</strong> {{description}}</li>
+  <li><strong>Put in the fridge on:</strong> {{dateIn}}</li>
+  <li><strong>Use by:</strong> {{useBy}}</li>
+</ul>
+{{/each}}
+{{else}}
+<p>You have no items in the fridge :(</p>
+{{/if}}
