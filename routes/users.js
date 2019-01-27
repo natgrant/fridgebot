@@ -7,6 +7,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   db.getUsers()
     .then(users => {
+      console.log(users);
       res.render("home", { users });
     })
     .catch(err => {
@@ -15,10 +16,11 @@ router.get("/", (req, res) => {
 });
 
 router.get("/profile/:id", (req, res) => {
-  let id = req.params.id;
-  console.log(id);
-  db.getUser(id).then(user => {
-    res.render("profile", user);
+  db.findUser(req.params.id).then(user => {
+    db.getFoodItems(user.id).then(items => {
+      console.log(user, items);
+      res.render("profile", { user, items });
+    });
   });
 });
 

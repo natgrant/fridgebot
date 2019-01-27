@@ -4,15 +4,23 @@ const database = require("knex")(config);
 
 module.exports = {
   getUsers,
-  getUser
+  getFoodItems,
+  findUser
 };
 
 function getUsers(db = database) {
   return db("users").select();
 }
 
-function getUser(id, db = database) {
+function findUser(id, db = database) {
   return db("users")
-    .where({ id: id })
-    .then(data => console.log(data));
+    .where({ id })
+    .first();
+}
+
+function getFoodItems(userId, db = database) {
+  console.log(userId);
+  return db("foodItems")
+    .where({ user_id: userId })
+    .then(items => items);
 }
